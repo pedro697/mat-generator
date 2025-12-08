@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mat Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00d4ff">
+
+</head>
+<body>
+
+  <!-- TELA INICIAL -->
+  <section id="tela-inicial" class="tela visivel">
+    <h1 class="titulo">MAT GENERATOR</h1>
+    <h2 class="subtitulo">Escolha a operação:</h2>
+
+    <button class="btn-op" onclick="selecionarOperacao('add')">Adição</button>
+    <button class="btn-op" onclick="selecionarOperacao('sub')">Subtração</button>
+    <button class="btn-op" onclick="selecionarOperacao('div')">Divisão</button>
+    <button class="btn-op" onclick="selecionarOperacao('mul')">Multiplicação</button>
+
+    <footer class="rodape">
+      Feito por Pedro Silveira • Versão 1.0.0
+    </footer>
+  </section>
+
+
+  <!-- TELA DE OPERAÇÃO -->
+  <section id="tela-operacao" class="tela oculto">
+
+    <h1 id="titulo-operacao"></h1>
+
+    <div class="card">
+      <p class="dif-label">Dificuldade:</p>
+      <select id="dificuldade">
+        <option value="10">Fácil: 1 a 10</option>
+        <option value="50" selected>Médio: 1 a 50</option>
+        <option value="200">Difícil: 1 a 200</option>
+      </select>
+
+      <button class="btn" id="btn-gerar">Gerar novo desafio</button>
+
+      <h2 id="conta" class="conta">Calcule:</h2>
+
+      <input id="resposta" placeholder="Digite sua resposta">
+
+      <div id="cronometro" class="cronometro">00:00:00.000</div>
+
+      <p class="score">
+        Corretas: <span id="acertos">0</span>
+        &nbsp;&nbsp;&nbsp;
+        Erradas: <span id="erros">0</span>
+      </p>
+
+      <button id="resetar" class="resetar">Resetar pontuação</button>
+    </div>
+
+    <button onclick="voltarInicio()" class="voltar">Voltar</button>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js");
+}
+</script>
+
+  </body>
+</html>
