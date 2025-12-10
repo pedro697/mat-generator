@@ -1,4 +1,4 @@
-const CACHE_NAME = "matgen-cache-v5"; // mude o número sempre que alterar arquivos
+const CACHE_NAME = "matgen-cache-v6"; // mude o número sempre que alterar arquivos
 
 const FILES_TO_CACHE = [
   "/",
