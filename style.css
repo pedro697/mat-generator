@@ -286,9 +286,13 @@ button:hover {
     overflow: hidden; /* garante que nada vaze */
 }
 #btnEnviar {
+    position: relative;
+    z-index: 20;
     white-space: nowrap;
     padding: 10px 18px;
-    flex-shrink: 0;        /* impede o botão de esticar */
+    flex-shrink: 0;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);        /* impede o botão de esticar */
 }
 #resposta {
     flex: 1;               /* ocupa o espaço adaptável */
@@ -299,7 +303,7 @@ button:hover {
 .input-area input {
     flex: 1;
     padding: 12px;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 12px;
     border: none;
     outline: none;
