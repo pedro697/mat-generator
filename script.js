@@ -72,8 +72,12 @@ function gerarDesafio() {
 document.getElementById("resposta").addEventListener("keyup", function (e) {
     if (e.key === "Enter") enviarResposta();
 });
+document.getElementById("btnEnviar").addEventListener("click", enviarResposta);
+
 
 function enviarResposta() {
+    document.getElementById("resposta").blur();  
+
     let valor = document.getElementById("resposta").value.trim();
     const card = document.querySelector(".card");
     if (valor === "") return;

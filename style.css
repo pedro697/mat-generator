@@ -106,6 +106,7 @@ body{
   width: 100%;
   text-align: center;
   opacity: 0.9;
+  margin-bottom: env(safe-area-inset-bottom);
 }
 
 /* ----- Tela de operação ----- */
