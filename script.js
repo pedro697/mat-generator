@@ -80,12 +80,17 @@ function enviarResposta() {
 
     let valor = document.getElementById("resposta").value.trim();
     const card = document.querySelector(".card");
+    
     if (valor === "") return;
 
     card.classList.remove("correto", "errado");
 
     if (valor == respostaCorreta) {
-        navigator.vibrate(80);
+        // CORREÇÃO AQUI: Verifica se a vibração existe antes de chamar
+        if (navigator.vibrate) { 
+            navigator.vibrate(80); 
+        }
+        
         pararCronometro();
 
         card.classList.add("correto");
@@ -93,7 +98,11 @@ function enviarResposta() {
             Number(document.getElementById("acertos").innerText) + 1;
 
     } else {
-        navigator.vibrate([60, 40, 60]);
+        // CORREÇÃO AQUI TAMBÉM
+        if (navigator.vibrate) { 
+            navigator.vibrate([60, 40, 60]); 
+        }
+        
         card.classList.add("errado");
 
         document.getElementById("erros").innerText =

@@ -286,6 +286,8 @@ button:hover {
     overflow: hidden; /* garante que nada vaze */
 }
 #btnEnviar {
+    cursor: pointer;
+    touch-action: manipulation;
     position: relative;
     z-index: 20;
     white-space: nowrap;
