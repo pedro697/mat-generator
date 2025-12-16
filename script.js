@@ -69,45 +69,49 @@ function gerarDesafio() {
    ENVIAR RESPOSTA
 ======================= */
 
-document.getElementById("resposta").addEventListener("keyup", function (e) {
-    if (e.key === "Enter") enviarResposta();
-});
-document.getElementById("btnEnviar").addEventListener("click", enviarResposta);
-
-
 function enviarResposta() {
-    document.getElementById("resposta").blur();  
+    const input = document.getElementById("resposta");
+    input.blur(); // fecha teclado no iOS
 
-    let valor = document.getElementById("resposta").value.trim();
+    // normaliza vírgula → ponto
+    let valor = input.value.replace(",", ".").trim();
     const card = document.querySelector(".card");
-    
+
     if (valor === "") return;
+
+    // converte para número
+    const respostaUsuario = Number(valor);
+    const respostaSistema = Number(respostaCorreta);
+
+    if (isNaN(respostaUsuario)) return;
 
     card.classList.remove("correto", "errado");
 
-    if (valor == respostaCorreta) {
-        // CORREÇÃO AQUI: Verifica se a vibração existe antes de chamar
-        if (navigator.vibrate) { 
-            navigator.vibrate(80); 
-        }
-        
+    // margem de erro para decimais
+    const margem = 0.01;
+
+    if (Math.abs(respostaUsuario - respostaSistema) < margem) {
+
+        if (navigator.vibrate) navigator.vibrate(80);
+
         pararCronometro();
 
         card.classList.add("correto");
+
         document.getElementById("acertos").innerText =
             Number(document.getElementById("acertos").innerText) + 1;
 
     } else {
-        // CORREÇÃO AQUI TAMBÉM
-        if (navigator.vibrate) { 
-            navigator.vibrate([60, 40, 60]); 
-        }
-        
+
+        if (navigator.vibrate) navigator.vibrate([60, 40, 60]);
+
         card.classList.add("errado");
 
         document.getElementById("erros").innerText =
             Number(document.getElementById("erros").innerText) + 1;
     }
+
+    input.value = "";
 
     setTimeout(() => {
         card.classList.remove("correto", "errado");
