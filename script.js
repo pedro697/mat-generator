@@ -71,7 +71,7 @@ function gerarDesafio() {
 
 function enviarResposta() {
     const input = document.getElementById("resposta");
-    input.blur(); // fecha teclado no iOS
+    // fecha teclado no iOS
 
     // normaliza vírgula → ponto
     let valor = input.value.replace(",", ".").trim();
@@ -112,6 +112,7 @@ function enviarResposta() {
     }
 
     input.value = "";
+    input.blur(); 
 
     setTimeout(() => {
         card.classList.remove("correto", "errado");
