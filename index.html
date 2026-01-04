@@ -22,45 +22,53 @@
     <button class="btn-op" onclick="selecionarOperacao('mul')">Multiplicação</button>
 
     <footer class="rodape">
-      Feito por Pedro Silveira • Versão 1.1.3
+      Feito por Pedro Silveira • Versão 1.2.3
     </footer>
   </section>
 
   <!-- TELA DE OPERAÇÃO -->
   <section id="tela-operacao" class="tela oculto">
 
-    <h1 id="titulo-operacao"></h1>
+  <h1 id="titulo-operacao">Operação</h1>
 
-    <div class="card">
-      <p class="dif-label">Dificuldade:</p>
-      <select id="dificuldade">
-        <option value="10">Fácil: 1 a 10</option>
-        <option value="50" selected>Médio: 1 a 50</option>
-        <option value="200">Difícil: 1 a 200</option>
-      </select>
+  <div class="card">
+    <p class="dif-label">Dificuldade:</p>
+    <select id="dificuldade">
+      <option value="10">Fácil: 1 a 10</option>
+      <option value="50" selected>Médio: 1 a 50</option>
+      <option value="200">Difícil: 1 a 200</option>
+    </select>
 
-      <button class="btn" id="btn-gerar">Gerar novo desafio</button>
+    <button id="btn-gerar">Gerar novo desafio</button>
+    
+    <button id="btnResultado" class="btn-resultado oculto">Ver Resultado</button>
 
-      <h2 id="conta" class="conta">Calcule:</h2>
+    <div id="conta" class="conta">Calcule:</div>
 
-      <div class="input-area">
-        <input id="resposta" type="text" inputmode="decimal" placeholder="Digite sua resposta"/>
-        <button id="btnEnviar" type="button" onclick="enviarResposta()">Enviar</button>
-      </div>
+    <p id="aviso-divisao" class="aviso-divisao">
+      (Arredonde para até 2 casas decimais)
+    </p>
 
-      <div id="cronometro" class="cronometro">00:00:00.000</div>
-
-      <p class="score">
-        Corretas: <span id="acertos">0</span>
-        &nbsp;&nbsp;&nbsp;
-        Erradas: <span id="erros">0</span>
-      </p>
-
-      <button id="resetar" class="resetar">Resetar pontuação</button>
+    <div class="input-area">
+      <input id="resposta" type="text" inputmode="decimal" placeholder="Digite sua resposta"/>
+      <button id="btnEnviar" type="button" onclick="enviarResposta()">Enviar</button>
     </div>
 
-    <button onclick="voltarInicio()" class="voltar">Voltar</button>
-  </section>
+    <div id="cronometro" class="cronometro">00:00:00.000</div>
+
+    <p class="score">
+      Corretas: <span id="acertos">0</span>
+      &nbsp;&nbsp;&nbsp;
+      Erradas: <span id="erros">0</span>
+    </p>
+
+    <button id="resetar" class="resetar">Resetar pontuação</button>
+  </div>
+
+  <button onclick="voltarInicio()" class="voltar">Voltar</button>
+
+  <div id="toast" class="toast"></div>
+</section>
 
   <script src="script.js"></script>
 
